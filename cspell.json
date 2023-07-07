@@ -1,0 +1,16 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "cleanup",
+    "deadrobot",
+    "geerlingguy",
+    "taskfile",
+    "varfile",
+    "vars"
+  ],
+  "ignoreWords": [],
+  "import": []
+}

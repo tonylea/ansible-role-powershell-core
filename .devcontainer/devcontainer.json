@@ -1,0 +1,28 @@
+{
+  "name": "Azure Ansible (Community)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "runArgs": [
+    "--init"
+  ],
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
+  ],
+  "overrideCommand": false,
+  "customizations": {
+    "vscode": {
+      "extensions": [
+		"vscoss.vscode-ansible",
+		"redhat.vscode-yaml",
+		"ms-vscode.azurecli",
+		"ms-azuretools.vscode-docker",
+		"GitHub.copilot",
+		"GitHub.copilot-chat"
+	]
+    }
+  },
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "ansible --version",
+  "remoteUser": "vscode"
+}
