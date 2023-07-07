@@ -1,0 +1,27 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: ubuntu-focal
+    image: geerlingguy/docker-ubuntu2004-ansible:latest
+    pre_build_image: false
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
+scenario:
+  create_sequence:
+    - dependency
+    - create
+    - prepare
+  converge_sequence:
+    - dependency
+    - create
+    - prepare
+    - converge
+  destroy_sequence:
+    - dependency
+    - cleanup
+    - destroy
