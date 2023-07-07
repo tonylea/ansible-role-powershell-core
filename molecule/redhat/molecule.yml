@@ -1,0 +1,55 @@
+---
+dependency:
+  name: galaxy
+  enabled: false
+driver:
+  name: docker
+platforms:
+  - name: rhel-8
+    image: redhat/ubi8
+    dockerfile: ../common/Dockerfile.j2
+    pre_build_image: false
+  - name: rhel-9
+    image: redhat/ubi9
+    dockerfile: ../common/Dockerfile.j2
+    pre_build_image: false
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
+scenario:
+  create_sequence:
+    - dependency
+    - create
+    - prepare
+  check_sequence:
+    - dependency
+    - cleanup
+    - destroy
+    - create
+    - prepare
+    - converge
+    - check
+    - destroy
+  converge_sequence:
+    - dependency
+    - create
+    - prepare
+    - converge
+  destroy_sequence:
+    - dependency
+    - cleanup
+    - destroy
+  test_sequence:
+    - dependency
+    - cleanup
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - side_effect
+    - verify
+    - cleanup
+    - destroy

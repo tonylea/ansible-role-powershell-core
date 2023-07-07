@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include deadrobot.powershell_core"
+      include_role:
+        name: "deadrobot.powershell_core"

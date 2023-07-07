@@ -1,0 +1,23 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Add default vars
+      ansible.builtin.include_vars:
+        dir: ../../defaults
+        files_matching: main.yml
+
+    - name: Check PowerShell version
+      ansible.builtin.command: pwsh --version
+      register: pwsh_ver_cmd
+      changed_when: false
+
+    # - name: Debug pwsh ver
+    #   ansible.builtin.debug:
+    #     var: pwsh_ver_cmd
+
+    - name: Assert that correct pwsh version is present
+      ansible.builtin.assert:
+        that: "'PowerShell {{ pwsh_version }}' in pwsh_ver_cmd.stdout"

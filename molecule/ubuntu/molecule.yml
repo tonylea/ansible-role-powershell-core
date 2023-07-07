@@ -1,0 +1,55 @@
+---
+dependency:
+  name: galaxy
+  enabled: false
+driver:
+  name: docker
+platforms:
+  - name: ubuntu-focal
+    image: ubuntu:focal
+    dockerfile: ../common/Dockerfile.j2
+    pre_build_image: false
+  - name: ubuntu-jammy
+    image: ubuntu:jammy
+    dockerfile: ../common/Dockerfile.j2
+    pre_build_image: false
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
+scenario:
+  create_sequence:
+    - dependency
+    - create
+    - prepare
+  check_sequence:
+    - dependency
+    - cleanup
+    - destroy
+    - create
+    - prepare
+    - converge
+    - check
+    - destroy
+  converge_sequence:
+    - dependency
+    - create
+    - prepare
+    - converge
+  destroy_sequence:
+    - dependency
+    - cleanup
+    - destroy
+  test_sequence:
+    - dependency
+    - cleanup
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - side_effect
+    - verify
+    - cleanup
+    - destroy
