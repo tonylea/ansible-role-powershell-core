@@ -1,0 +1,6 @@
+---
+pwsh_dependencies:
+  - krb5-libs
+  - libicu
+  - openssl-libs
+  - zlib

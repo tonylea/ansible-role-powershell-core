@@ -1,0 +1,4 @@
+---
+pwsh_arch: "{{ (ansible_architecture == 'x86_64') | ternary('x64', 'arm64') }}"
+pwsh_package_url: "https://github.com/PowerShell/PowerShell/releases/download/v{{ pwsh_version }}/powershell-{{ pwsh_version }}-linux-{{ pwsh_arch }}.tar.gz"
+pwsh_directory: "/opt/microsoft/powershell/7"

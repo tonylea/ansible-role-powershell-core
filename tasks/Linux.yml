@@ -1,0 +1,29 @@
+---
+- name: Install dependencies
+  ansible.builtin.package:
+    name: "{{ pwsh_dependencies }}"
+    state: present
+  become: true
+
+- name: Create a PowerShell directory
+  ansible.builtin.file:
+    path: "{{ pwsh_directory}}"
+    state: directory
+    mode: "0755"
+
+- name: Download and unarchive PowerShell
+  ansible.builtin.unarchive:
+    src: "{{ pwsh_package_url }}"
+    dest: "{{ pwsh_directory }}"
+    remote_src: yes
+
+- name: Set execute permissions on pwsh
+  ansible.builtin.file:
+    path: "{{ pwsh_directory }}/pwsh"
+    mode: a+x
+
+- name: Create symbolic link
+  ansible.builtin.file:
+    src: "{{ pwsh_directory }}/pwsh"
+    dest: "/usr/bin/pwsh"
+    state: link

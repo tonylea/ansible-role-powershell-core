@@ -4,13 +4,24 @@
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
+    "autoclean",
     "cleanup",
     "deadrobot",
     "geerlingguy",
+    "pwsh",
     "taskfile",
     "varfile",
     "vars"
   ],
-  "ignoreWords": [],
+  "ignoreWords": [
+    "aarch",
+    "libc",
+    "libgcc",
+    "libgssapi",
+    "libicu",
+    "liblttng",
+    "libstdc",
+    "libunwind"
+  ],
   "import": []
 }
